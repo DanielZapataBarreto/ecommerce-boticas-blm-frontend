@@ -1,0 +1,27 @@
+.main-products {
+  padding: 20px 0;
+  max-width: 1400px;
+  width: 85%;
+  margin: 0 auto;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.add-to-cart {
+  width: 100%;
+  background-color: #e09249;
+}
+
+.divider {
+  margin: 15px auto;
+}
+
+.filter {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}

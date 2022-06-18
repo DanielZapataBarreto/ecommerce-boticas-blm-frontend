@@ -1,0 +1,34 @@
+.navbar {
+  background-color: #0d206f;
+  height: 95px;
+}
+
+.logo {
+  width: 250px;
+  cursor: pointer;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.navbar-button {
+  color: #fff;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.our-products {
+  font-size: 16px;
+  color: #e1e1e1;
+}
+
+.navigation > p {
+  margin: 0;
+  color: #e1e1e1;
+  font-size: 16px;
+}

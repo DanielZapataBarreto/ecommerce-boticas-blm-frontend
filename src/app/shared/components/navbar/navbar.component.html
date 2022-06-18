@@ -1,0 +1,45 @@
+<mat-toolbar class="navbar">
+  <img
+    class="logo"
+    src="../../../../assets/images/logo.png"
+    alt="Botica Biofarma Logo"
+    routerLink="/"
+  />
+  <span class="spacer"></span>
+  <div class="navigation">
+    <p>¡Bienvenido, <b>Usuario</b>!</p>
+    <button class="our-products" mat-button routerLink="/products">
+      Nuestros Productos
+    </button>
+    <button
+      mat-icon-button
+      #tooltip="matTooltip"
+      matTooltip="Carrito"
+      aria-label="Carrito"
+      class="navbar-button"
+      matBadge="0"
+    >
+      <mat-icon>shopping_cart</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      #tooltip="matTooltip"
+      matTooltip="Inicia Sesión"
+      aria-label="Inicia Sesión"
+      class="navbar-button"
+      *ngIf="true"
+    >
+      <mat-icon>login</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      #tooltip="matTooltip"
+      matTooltip="Cerrar Sesión"
+      aria-label="Cerrar Sesión"
+      class="navbar-button"
+      *ngIf="false"
+    >
+      <mat-icon>logout</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>

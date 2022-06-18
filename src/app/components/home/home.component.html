@@ -1,0 +1,123 @@
+<app-navbar></app-navbar>
+<main>
+  <img
+    class="banner"
+    src="../../../assets/images/banner.png"
+    alt="Botica Biofarma Banner"
+  />
+  <div class="sections">
+    <section>
+      <div class="section-title">
+        <mat-icon aria-hidden="false" aria-label="Cuidado personal"
+          >spa</mat-icon
+        >
+        <h2>Cuidado Personal</h2>
+      </div>
+      <div class="section-content">
+        <div class="card" *ngFor="let item of personalCareProducts">
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>{{ item.title }}</mat-card-title>
+              <mat-card-subtitle
+                >S/.{{ item.price.toFixed(2) }}</mat-card-subtitle
+              >
+            </mat-card-header>
+            <img
+              mat-card-image
+              src="http://localhost:4201/uploads/{{ item.image }}"
+              alt="Photo of a Shiba Inu"
+            />
+            <mat-card-content>
+              <p>{{ item.description || "Sin descripción disponible" }}</p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button class="add-to-cart">AÑADIR AL CARRITO</button>
+            </mat-card-actions>
+          </mat-card>
+          <button mat-button class="show-more" routerLink="/products">
+            VER MÁS
+          </button>
+        </div>
+        <div *ngIf="personalCareProducts.length === 0">
+          <span>No hay productos de esta categoría</span>
+        </div>
+      </div>
+    </section>
+    <mat-divider class="divider"></mat-divider>
+    <section>
+      <div class="section-title">
+        <mat-icon aria-hidden="false" aria-label="Medicamentos"
+          >medication</mat-icon
+        >
+        <h2>Medicamentos</h2>
+      </div>
+      <div class="section-content">
+        <div class="card" *ngFor="let item of medicineProducts">
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>{{ item.title }}</mat-card-title>
+              <mat-card-subtitle
+                >S/.{{ item.price.toFixed(2) }}</mat-card-subtitle
+              >
+            </mat-card-header>
+            <img
+              mat-card-image
+              src="http://localhost:4201/uploads/{{ item.image }}"
+              alt="Photo of a Shiba Inu"
+            />
+            <mat-card-content>
+              <p>{{ item.description || "Sin descripción disponible" }}</p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button class="add-to-cart">AÑADIR AL CARRITO</button>
+            </mat-card-actions>
+          </mat-card>
+          <button mat-button class="show-more" routerLink="/products">
+            VER MÁS
+          </button>
+        </div>
+        <div *ngIf="medicineProducts.length === 0">
+          <span>No hay productos de esta categoría</span>
+        </div>
+      </div>
+    </section>
+    <mat-divider class="divider"></mat-divider>
+    <section>
+      <div class="section-title">
+        <mat-icon aria-hidden="false" aria-label="Cuidado para el Cabello"
+          >styler</mat-icon
+        >
+        <h2>Cuidado para el Cabello</h2>
+      </div>
+      <div class="section-content">
+        <div class="card" *ngFor="let item of hairCareProducts">
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>{{ item.title }}</mat-card-title>
+              <mat-card-subtitle
+                >S/.{{ item.price.toFixed(2) }}</mat-card-subtitle
+              >
+            </mat-card-header>
+            <img
+              mat-card-image
+              src="http://localhost:4201/uploads/{{ item.image }}"
+              alt="Photo of a Shiba Inu"
+            />
+            <mat-card-content>
+              <p>{{ item.description || "Sin descripción disponible" }}</p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button class="add-to-cart">AÑADIR AL CARRITO</button>
+            </mat-card-actions>
+          </mat-card>
+          <button mat-button class="show-more" routerLink="/products">
+            VER MÁS
+          </button>
+        </div>
+        <div *ngIf="hairCareProducts.length === 0">
+          <span>No hay productos de esta categoría</span>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
