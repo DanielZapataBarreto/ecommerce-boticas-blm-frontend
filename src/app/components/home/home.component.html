@@ -1,11 +1,11 @@
 <app-navbar></app-navbar>
-<main>
+<main class="home-container">
   <img
     class="banner"
     src="../../../assets/images/banner.png"
     alt="Botica Biofarma Banner"
   />
-  <div class="sections">
+  <div *ngIf="!loading" class="sections">
     <section>
       <div class="section-title">
         <mat-icon aria-hidden="false" aria-label="Cuidado personal"
@@ -120,4 +120,6 @@
       </div>
     </section>
   </div>
+  <div *ngIf="loading" class="sections">Cargando productos...</div>
 </main>
+<app-footer></app-footer>

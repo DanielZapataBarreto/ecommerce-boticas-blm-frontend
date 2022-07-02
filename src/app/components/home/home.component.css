@@ -44,3 +44,7 @@
   width: 100%;
   background-color: #e09249;
 }
+
+.home-container {
+  min-height: calc(100vh - 150px);
+}

@@ -17,14 +17,15 @@
       </mat-select>
     </mat-form-field>
   </div>
-  <div class="products">
-    <div class="card" *ngFor="let item of products">
+  <div *ngIf="!loading" class="products">
+    <div *ngFor="let item of products">
       <mat-card>
         <mat-card-header>
           <mat-card-title>{{ item.title }}</mat-card-title>
           <mat-card-subtitle>S/.{{ item.price.toFixed(2) }}</mat-card-subtitle>
         </mat-card-header>
         <img
+          class="product-image"
           mat-card-image
           src="http://localhost:4201/uploads/{{ item.image }}"
           alt="Photo of a Shiba Inu"
@@ -41,4 +42,5 @@
       <span>No hay productos registrados.</span>
     </div>
   </div>
+  <div *ngIf="loading" class="sections">Cargando productos...</div>
 </main>

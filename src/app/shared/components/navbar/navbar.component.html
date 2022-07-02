@@ -7,7 +7,10 @@
   />
   <span class="spacer"></span>
   <div class="navigation">
-    <p>¡Bienvenido, <b>Usuario</b>!</p>
+    <p>
+      ¡Bienvenido, <b>{{ (user$ | async)?.name || "Usuario" }}</b
+      >!
+    </p>
     <button class="our-products" mat-button routerLink="/products">
       Nuestros Productos
     </button>
@@ -27,7 +30,8 @@
       matTooltip="Inicia Sesión"
       aria-label="Inicia Sesión"
       class="navbar-button"
-      *ngIf="true"
+      *ngIf="(user$ | async) === null"
+      routerLink="/login"
     >
       <mat-icon>login</mat-icon>
     </button>
@@ -37,7 +41,7 @@
       matTooltip="Cerrar Sesión"
       aria-label="Cerrar Sesión"
       class="navbar-button"
-      *ngIf="false"
+      *ngIf="(user$ | async) !== null"
     >
       <mat-icon>logout</mat-icon>
     </button>

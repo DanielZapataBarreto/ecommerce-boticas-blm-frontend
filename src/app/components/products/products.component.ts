@@ -16,6 +16,7 @@ export class ProductsComponent implements OnInit {
     { value: 'medicamentos', viewValue: 'Medicamentos' },
   ];
   filter: FormControl;
+  loading: Boolean = false;
 
   constructor(private productService: ProductService) {
     this.filter = new FormControl('todos', []);
@@ -26,16 +27,20 @@ export class ProductsComponent implements OnInit {
   }
 
   getAllProducts(): any {
+    this.loading = true;
     this.productService.getAllProducts().subscribe((res) => {
       this.products = res;
+      this.loading = false;
     });
   }
 
   onChangeCategoriesSelect(value: any): any {
+    this.loading = true;
     switch (value) {
       case 'todos':
         this.productService.getAllProducts().subscribe((res) => {
           this.products = res;
+          this.loading = false;
         });
         break;
       case 'cuidadoPersonal':
@@ -43,6 +48,7 @@ export class ProductsComponent implements OnInit {
           .filterProducts('?category=CuidadoPersonal')
           .subscribe((res) => {
             this.products = res;
+            this.loading = false;
           });
         break;
       case 'cabello':
@@ -50,6 +56,7 @@ export class ProductsComponent implements OnInit {
           .filterProducts('?category=Cabello')
           .subscribe((res) => {
             this.products = res;
+            this.loading = false;
           });
         break;
       case 'medicamentos':
@@ -57,6 +64,7 @@ export class ProductsComponent implements OnInit {
           .filterProducts('?category=Medicamentos')
           .subscribe((res) => {
             this.products = res;
+            this.loading = false;
           });
         break;
     }

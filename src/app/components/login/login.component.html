@@ -1,1 +1,55 @@
-<p>login works!</p>
+<app-navbar></app-navbar>
+<main class="login-container">
+  <mat-card class="login">
+    <mat-card-header class="card-header">
+      <mat-card-title class="card-title">Inicia Sesión</mat-card-title>
+    </mat-card-header>
+    <form (ngSubmit)="save()" [formGroup]="form">
+      <mat-card-content class="card-content">
+        <mat-form-field class="input" appearance="fill">
+          <mat-label>Correo</mat-label>
+          <input
+            type="email"
+            matInput
+            placeholder="Ingrese su correo"
+            formControlName="email"
+            autocomplete="off"
+          />
+          <mat-error
+            *ngIf="hasError('email', 'email') && !hasError('email', 'required')"
+            >Ingrese un correo válido</mat-error
+          >
+          <mat-error *ngIf="hasError('email', 'required')"
+            >Ingrese un correo</mat-error
+          >
+        </mat-form-field>
+        <mat-form-field class="input" appearance="fill">
+          <mat-label>Contraseña</mat-label>
+          <input
+            type="password"
+            matInput
+            placeholder="Ingrese su contraseña"
+            formControlName="password"
+            autocomplete="off"
+          />
+          <mat-error *ngIf="hasError('password', 'required')"
+            >Ingrese una contraseña</mat-error
+          >
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions class="card-actions">
+        <button
+          type="submit"
+          mat-raised-button
+          color="primary"
+          class="save"
+          [disabled]="form.invalid"
+        >
+          INGRESA
+        </button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+  <app-loading-spinner *ngIf="loading | async"></app-loading-spinner>
+</main>
+<app-footer></app-footer>

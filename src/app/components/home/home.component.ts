@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -12,6 +11,7 @@ export class HomeComponent implements OnInit {
   personalCareProducts: Array<any> = [];
   medicineProducts: Array<any> = [];
   hairCareProducts: Array<any> = [];
+  loading: Boolean = false;
 
   constructor(private productService: ProductService) {}
 
@@ -20,9 +20,11 @@ export class HomeComponent implements OnInit {
   }
 
   getAllProducts(): any {
+    this.loading = true;
     this.productService.getAllProducts().subscribe((res) => {
       this.products = res;
       this.initializeProductsList(this.products);
+      this.loading = false;
     });
   }
 
