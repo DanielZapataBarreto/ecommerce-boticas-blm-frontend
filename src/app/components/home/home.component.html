@@ -24,8 +24,8 @@
             </mat-card-header>
             <img
               mat-card-image
-              src="http://localhost:4201/uploads/{{ item.image }}"
-              alt="Photo of a Shiba Inu"
+              src="{{ baseUrl }}/{{ item.image }}"
+              alt="{{ item.title }}"
             />
             <mat-card-content>
               <p>{{ item.description || "Sin descripción disponible" }}</p>
@@ -62,8 +62,8 @@
             </mat-card-header>
             <img
               mat-card-image
-              src="http://localhost:4201/uploads/{{ item.image }}"
-              alt="Photo of a Shiba Inu"
+              src="{{ baseUrl }}/{{ item.image }}"
+              alt="{{ item.title }}"
             />
             <mat-card-content>
               <p>{{ item.description || "Sin descripción disponible" }}</p>
@@ -100,8 +100,8 @@
             </mat-card-header>
             <img
               mat-card-image
-              src="http://localhost:4201/uploads/{{ item.image }}"
-              alt="Photo of a Shiba Inu"
+              src="{{ baseUrl }}/{{ item.image }}"
+              alt="{{ item.title }}"
             />
             <mat-card-content>
               <p>{{ item.description || "Sin descripción disponible" }}</p>

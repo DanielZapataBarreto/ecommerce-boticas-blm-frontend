@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,7 @@ export class HomeComponent implements OnInit {
   medicineProducts: Array<any> = [];
   hairCareProducts: Array<any> = [];
   loading: Boolean = false;
+  baseUrl: string = `${environment.apiBaseUrl}/uploads`;
 
   constructor(private productService: ProductService) {}
 

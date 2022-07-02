@@ -20,8 +20,19 @@ export const showReport = (
     case 'info':
       Report.info(title, message, 'Listo');
       break;
-    case 'callback':
+    case 'callback-success':
       Report.success(title, message, 'Listo', callback!);
+      break;
+    case 'callback-failure':
+      Report.failure(title, message, 'Listo', callback!);
+      break;
+    case 'callback-warning':
+      Report.warning(title, message, 'Listo', callback!);
+      break;
+    case 'callback-info':
+      Report.info(title, message, 'Listo', callback!);
+      break;
+    default:
       break;
   }
 };
@@ -46,6 +57,8 @@ export const showNotification = (
       break;
     case 'callback':
       Notify.info(message, callback!, { timeout: 1300 });
+      break;
+    default:
       break;
   }
 };

@@ -13,3 +13,16 @@ export const loginRequestFailure = createAction(
   '[Auth] Login Request Failure',
   props<{ error: string }>()
 );
+
+export const autoLoginRequest = createAction(
+  '[Auth] Autologin Request',
+  props<{ id: string }>()
+);
+export const autoLoginRequestSuccess = createAction(
+  '[Auth] Autologin Request Success',
+  props<{ user: User }>()
+);
+export const autoLoginRequestFailure = createAction(
+  '[Auth] Autologin Request Failure',
+  props<{ error: string }>()
+);

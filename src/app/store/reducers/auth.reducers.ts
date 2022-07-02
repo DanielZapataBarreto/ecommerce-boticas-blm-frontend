@@ -6,6 +6,9 @@ import {
 } from '@ngrx/store';
 import { User } from 'src/app/models/user.model';
 import {
+  autoLoginRequest,
+  autoLoginRequestFailure,
+  autoLoginRequestSuccess,
   loginRequest,
   loginRequestFailure,
   loginRequestSuccess,
@@ -38,6 +41,27 @@ const _authReducer = createReducer(
     };
   }),
   on(loginRequestFailure, (state, { error }) => {
+    return {
+      ...state,
+      loginError: error,
+      user: null!,
+      isLogging: false,
+    };
+  }),
+  on(autoLoginRequest, (state) => {
+    return {
+      ...state,
+      isLogging: true,
+    };
+  }),
+  on(autoLoginRequestSuccess, (state, { user }) => {
+    return {
+      ...state,
+      user,
+      isLogging: false,
+    };
+  }),
+  on(autoLoginRequestFailure, (state, { error }) => {
     return {
       ...state,
       loginError: error,

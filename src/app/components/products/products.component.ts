@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { FormControl, Validators } from '@angular/forms';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-products',
@@ -17,6 +18,7 @@ export class ProductsComponent implements OnInit {
   ];
   filter: FormControl;
   loading: Boolean = false;
+  baseUrl: string = `${environment.apiBaseUrl}/uploads`;
 
   constructor(private productService: ProductService) {
     this.filter = new FormControl('todos', []);
