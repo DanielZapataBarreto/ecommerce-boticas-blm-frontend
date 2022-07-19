@@ -81,6 +81,7 @@ export class AuthEffects {
         ofType(AuthActions.autoLoginRequestFailure),
         tap(({ error }) => {
           showReport('failure', 'Error', `${error}. Inicie sesión nuevamente`);
+          this.authService.removeTokenAndIdFromLocalStorage();
           this.router.navigate(['/login']);
         })
       ),

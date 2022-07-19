@@ -42,6 +42,7 @@
       aria-label="Cerrar Sesión"
       class="navbar-button"
       *ngIf="(user$ | async) !== null"
+      (click)="logout()"
     >
       <mat-icon>logout</mat-icon>
     </button>

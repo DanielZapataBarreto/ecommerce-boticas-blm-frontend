@@ -8,7 +8,6 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthService {
   url = `${environment.apiBaseUrl}/auth`;
-  timeoutInterval: any;
 
   constructor(private http: HttpClient) {}
 
@@ -19,6 +18,10 @@ export class AuthService {
   autologin(id: string): Observable<User> {
     let headers = new HttpHeaders({ token: this.getTokenFromLocalStorage() });
     return this.http.post<User>(`${this.url}/autologin`, { id }, { headers });
+  }
+
+  logout() {
+    this.removeTokenAndIdFromLocalStorage();
   }
 
   setTokenAndIdInLocalStorage(user: User): any {
