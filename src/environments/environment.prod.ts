@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiBaseUrl: 'http://localhost:4201/api/v1',
+  apiBaseUrl: 'https://botica-blm-backend.herokuapp.com/api/v1',
 };
