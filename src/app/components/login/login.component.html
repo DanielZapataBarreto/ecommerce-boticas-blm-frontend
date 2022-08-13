@@ -8,43 +8,23 @@
       <mat-card-content class="card-content">
         <mat-form-field class="input" appearance="fill">
           <mat-label>Correo</mat-label>
-          <input
-            type="email"
-            matInput
-            placeholder="Ingrese su correo"
-            formControlName="email"
-            autocomplete="off"
-          />
-          <mat-error
-            *ngIf="hasError('email', 'email') && !hasError('email', 'required')"
-            >Ingrese un correo válido</mat-error
-          >
-          <mat-error *ngIf="hasError('email', 'required')"
-            >Ingrese un correo</mat-error
-          >
+          <input type="email" matInput placeholder="Ingrese su correo" formControlName="email" autocomplete="off" />
+          <mat-error *ngIf="hasError('email', 'email') && !hasError('email', 'required')">Ingrese un correo válido
+          </mat-error>
+          <mat-error *ngIf="hasError('email', 'required')">Ingrese un correo</mat-error>
         </mat-form-field>
         <mat-form-field class="input" appearance="fill">
           <mat-label>Contraseña</mat-label>
-          <input
-            type="password"
-            matInput
-            placeholder="Ingrese su contraseña"
-            formControlName="password"
-            autocomplete="off"
-          />
-          <mat-error *ngIf="hasError('password', 'required')"
-            >Ingrese una contraseña</mat-error
-          >
+          <input type="password" matInput placeholder="Ingrese su contraseña" formControlName="password"
+            autocomplete="off" />
+          <mat-error *ngIf="hasError('password', 'required')">Ingrese una contraseña</mat-error>
         </mat-form-field>
+        <div class="register">
+          <a routerLink="/register">¿No tienes una cuenta? Regístrate aquí</a>
+        </div>
       </mat-card-content>
       <mat-card-actions class="card-actions">
-        <button
-          type="submit"
-          mat-raised-button
-          color="primary"
-          class="save"
-          [disabled]="form.invalid"
-        >
+        <button type="submit" mat-raised-button color="primary" class="save" [disabled]="form.invalid">
           INGRESA
         </button>
       </mat-card-actions>

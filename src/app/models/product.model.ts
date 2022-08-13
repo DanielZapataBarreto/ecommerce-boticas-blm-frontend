@@ -1,8 +1,8 @@
 export interface Product {
-  title: String;
-  description: String;
-  image: String;
-  categories: Array<String>;
-  price: Number;
-  stock: Number;
+  title: string;
+  description: string;
+  image: string;
+  price: number;
+  categories: Array<string>;
+  stock: number;
 }

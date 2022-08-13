@@ -9,10 +9,14 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
   url = `${environment.apiBaseUrl}/auth`;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   login(user: User): Observable<User> {
     return this.http.post<User>(`${this.url}/login`, user);
+  }
+
+  register(user: any): Observable<any> {
+    return this.http.post(`${this.url}/register`, user);
   }
 
   autologin(id: string): Observable<User> {

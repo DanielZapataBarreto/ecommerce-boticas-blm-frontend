@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from 'src/app/services/product.service';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { Product } from 'src/app/models/product.model';
 import { environment } from 'src/environments/environment';
+import * as CartActions from '../../store/actions/cart.actions';
+import * as fromProduct from '../../store/reducers/product.reducer';
 
 @Component({
   selector: 'app-home',
@@ -15,31 +19,21 @@ export class HomeComponent implements OnInit {
   loading: Boolean = false;
   baseUrl: string = `${environment.apiBaseUrl}/uploads`;
 
-  constructor(private productService: ProductService) {}
+  personalCareProducts$!: Observable<Array<Product>>;
+  medicineProducts$!: Observable<Array<Product>>;
+  hairCareProducts$!: Observable<Array<Product>>;
+  loading$!: Observable<boolean>;
+
+  constructor(private store: Store) { }
 
   ngOnInit(): void {
-    console.log('Pagina de inicio');
-    this.getAllProducts();
+    this.personalCareProducts$ = this.store.select(fromProduct.selectPersonalCareProductsFromProductState);
+    this.medicineProducts$ = this.store.select(fromProduct.selectMedicineProductsFromProductState);
+    this.hairCareProducts$ = this.store.select(fromProduct.selectHairCareProductsFromProductState);
+    this.loading$ = this.store.select(fromProduct.selectIsLoadingFromProductState);
   }
 
-  getAllProducts(): any {
-    this.loading = true;
-    this.productService.getAllProducts().subscribe((res) => {
-      this.products = res;
-      this.initializeProductsList(this.products);
-      this.loading = false;
-    });
-  }
-
-  initializeProductsList(products: Array<any>): any {
-    this.personalCareProducts = products
-      .filter((product: any) => product.categories.includes('CuidadoPersonal'))
-      .slice(0, 4);
-    this.hairCareProducts = products
-      .filter((product: any) => product.categories.includes('Cabello'))
-      .slice(0, 4);
-    this.medicineProducts = products
-      .filter((product: any) => product.categories.includes('Medicamentos'))
-      .slice(0, 4);
+  addProductToCart(product: Product) {
+    this.store.dispatch(CartActions.addProductToCart({ product }));
   }
 }

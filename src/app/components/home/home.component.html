@@ -1,44 +1,32 @@
 <app-navbar></app-navbar>
 <main class="home-container">
-  <img
-    class="banner"
-    src="../../../assets/images/banner.png"
-    alt="Botica Biofarma Banner"
-  />
-  <div *ngIf="!loading" class="sections">
+  <img class="banner" src="../../../assets/images/banner.png" alt="Botica Biofarma Banner" />
+  <div *ngIf="!(loading$ | async)" class="sections">
     <section>
       <div class="section-title">
-        <mat-icon aria-hidden="false" aria-label="Cuidado personal"
-          >spa</mat-icon
-        >
+        <mat-icon aria-hidden="false" aria-label="Cuidado personal">spa</mat-icon>
         <h2>Cuidado Personal</h2>
       </div>
       <div class="section-content">
-        <div class="card" *ngFor="let item of personalCareProducts">
+        <div class="card" *ngFor="let item of (personalCareProducts$ | async)">
           <mat-card>
             <mat-card-header>
               <mat-card-title>{{ item.title }}</mat-card-title>
-              <mat-card-subtitle
-                >S/.{{ item.price.toFixed(2) }}</mat-card-subtitle
-              >
+              <mat-card-subtitle>S/.{{ item.price.toFixed(2) }}</mat-card-subtitle>
             </mat-card-header>
-            <img
-              mat-card-image
-              src="{{ baseUrl }}/{{ item.image }}"
-              alt="{{ item.title }}"
-            />
+            <img mat-card-image src="{{ baseUrl }}/{{ item.image }}" alt="{{ item.title }}" />
             <mat-card-content>
               <p>{{ item.description || "Sin descripción disponible" }}</p>
             </mat-card-content>
             <mat-card-actions>
-              <button mat-button class="add-to-cart">AÑADIR AL CARRITO</button>
+              <button mat-button class="add-to-cart" (click)="addProductToCart(item)">AÑADIR AL CARRITO</button>
             </mat-card-actions>
           </mat-card>
           <button mat-button class="show-more" routerLink="/products">
             VER MÁS
           </button>
         </div>
-        <div *ngIf="personalCareProducts.length === 0">
+        <div *ngIf="(personalCareProducts$ | async)!.length === 0">
           <span>No hay productos de esta categoría</span>
         </div>
       </div>
@@ -46,37 +34,29 @@
     <mat-divider class="divider"></mat-divider>
     <section>
       <div class="section-title">
-        <mat-icon aria-hidden="false" aria-label="Medicamentos"
-          >medication</mat-icon
-        >
+        <mat-icon aria-hidden="false" aria-label="Medicamentos">medication</mat-icon>
         <h2>Medicamentos</h2>
       </div>
       <div class="section-content">
-        <div class="card" *ngFor="let item of medicineProducts">
+        <div class="card" *ngFor="let item of (medicineProducts$ | async)">
           <mat-card>
             <mat-card-header>
               <mat-card-title>{{ item.title }}</mat-card-title>
-              <mat-card-subtitle
-                >S/.{{ item.price.toFixed(2) }}</mat-card-subtitle
-              >
+              <mat-card-subtitle>S/.{{ item.price.toFixed(2) }}</mat-card-subtitle>
             </mat-card-header>
-            <img
-              mat-card-image
-              src="{{ baseUrl }}/{{ item.image }}"
-              alt="{{ item.title }}"
-            />
+            <img mat-card-image src="{{ baseUrl }}/{{ item.image }}" alt="{{ item.title }}" />
             <mat-card-content>
               <p>{{ item.description || "Sin descripción disponible" }}</p>
             </mat-card-content>
             <mat-card-actions>
-              <button mat-button class="add-to-cart">AÑADIR AL CARRITO</button>
+              <button mat-button class="add-to-cart" (click)="addProductToCart(item)">AÑADIR AL CARRITO</button>
             </mat-card-actions>
           </mat-card>
           <button mat-button class="show-more" routerLink="/products">
             VER MÁS
           </button>
         </div>
-        <div *ngIf="medicineProducts.length === 0">
+        <div *ngIf="(medicineProducts$ | async)!.length === 0">
           <span>No hay productos de esta categoría</span>
         </div>
       </div>
@@ -84,42 +64,34 @@
     <mat-divider class="divider"></mat-divider>
     <section>
       <div class="section-title">
-        <mat-icon aria-hidden="false" aria-label="Cuidado para el Cabello"
-          >styler</mat-icon
-        >
+        <mat-icon aria-hidden="false" aria-label="Cuidado para el Cabello">styler</mat-icon>
         <h2>Cuidado para el Cabello</h2>
       </div>
       <div class="section-content">
-        <div class="card" *ngFor="let item of hairCareProducts">
+        <div class="card" *ngFor="let item of (hairCareProducts$ | async)">
           <mat-card>
             <mat-card-header>
               <mat-card-title>{{ item.title }}</mat-card-title>
-              <mat-card-subtitle
-                >S/.{{ item.price.toFixed(2) }}</mat-card-subtitle
-              >
+              <mat-card-subtitle>S/.{{ item.price.toFixed(2) }}</mat-card-subtitle>
             </mat-card-header>
-            <img
-              mat-card-image
-              src="{{ baseUrl }}/{{ item.image }}"
-              alt="{{ item.title }}"
-            />
+            <img mat-card-image src="{{ baseUrl }}/{{ item.image }}" alt="{{ item.title }}" />
             <mat-card-content>
               <p>{{ item.description || "Sin descripción disponible" }}</p>
             </mat-card-content>
             <mat-card-actions>
-              <button mat-button class="add-to-cart">AÑADIR AL CARRITO</button>
+              <button mat-button class="add-to-cart" (click)="addProductToCart(item)">AÑADIR AL CARRITO</button>
             </mat-card-actions>
           </mat-card>
           <button mat-button class="show-more" routerLink="/products">
             VER MÁS
           </button>
         </div>
-        <div *ngIf="hairCareProducts.length === 0">
+        <div *ngIf="(hairCareProducts$ | async)!.length === 0">
           <span>No hay productos de esta categoría</span>
         </div>
       </div>
     </section>
   </div>
-  <div *ngIf="loading" class="sections">Cargando productos...</div>
+  <div *ngIf="loading$ | async" class="sections">Cargando productos...</div>
 </main>
 <app-footer></app-footer>

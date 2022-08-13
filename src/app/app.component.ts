@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AuthService } from './services/auth.service';
 import * as AuthActions from './store/actions/auth.actions';
+import * as ProductActions from './store/actions/product.actions';
 
 @Component({
   selector: 'app-root',
@@ -12,12 +12,13 @@ export class AppComponent implements OnInit {
   title = 'client';
   id: string;
 
-  constructor(private store: Store, private authService: AuthService) {
+  constructor(private store: Store) {
     this.id = localStorage.getItem('_id')!;
   }
 
   ngOnInit() {
     this.autoLogin();
+    this.store.dispatch(ProductActions.getAllProducts());
   }
 
   autoLogin(): void {

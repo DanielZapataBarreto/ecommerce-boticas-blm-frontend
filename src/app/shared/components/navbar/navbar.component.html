@@ -1,49 +1,23 @@
 <mat-toolbar class="navbar">
-  <img
-    class="logo"
-    src="../../../../assets/images/logo.png"
-    alt="Botica Biofarma Logo"
-    routerLink="/"
-  />
+  <img class="logo" src="../../../../assets/images/logo.png" alt="Botica Biofarma Logo" routerLink="/" />
   <span class="spacer"></span>
   <div class="navigation">
     <p>
-      ¡Bienvenido, <b>{{ (user$ | async)?.name || "Usuario" }}</b
-      >!
+      ¡Bienvenido, <b>{{ (user$ | async)?.name || "Usuario" }}</b>!
     </p>
     <button class="our-products" mat-button routerLink="/products">
       Nuestros Productos
     </button>
-    <button
-      mat-icon-button
-      #tooltip="matTooltip"
-      matTooltip="Carrito"
-      aria-label="Carrito"
-      class="navbar-button"
-      matBadge="0"
-    >
+    <button mat-icon-button #tooltip="matTooltip" matTooltip="Carrito" aria-label="Carrito" class="navbar-button"
+      [matBadge]="cartItems$ | async" routerLink="/cart">
       <mat-icon>shopping_cart</mat-icon>
     </button>
-    <button
-      mat-icon-button
-      #tooltip="matTooltip"
-      matTooltip="Inicia Sesión"
-      aria-label="Inicia Sesión"
-      class="navbar-button"
-      *ngIf="(user$ | async) === null"
-      routerLink="/login"
-    >
+    <button mat-icon-button #tooltip="matTooltip" matTooltip="Inicia Sesión" aria-label="Inicia Sesión"
+      class="navbar-button" *ngIf="(user$ | async) === null" routerLink="/login">
       <mat-icon>login</mat-icon>
     </button>
-    <button
-      mat-icon-button
-      #tooltip="matTooltip"
-      matTooltip="Cerrar Sesión"
-      aria-label="Cerrar Sesión"
-      class="navbar-button"
-      *ngIf="(user$ | async) !== null"
-      (click)="logout()"
-    >
+    <button mat-icon-button #tooltip="matTooltip" matTooltip="Cerrar Sesión" aria-label="Cerrar Sesión"
+      class="navbar-button" *ngIf="(user$ | async) !== null" (click)="logout()">
       <mat-icon>logout</mat-icon>
     </button>
   </div>

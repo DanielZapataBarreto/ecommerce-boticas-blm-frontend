@@ -1,1 +1,90 @@
-<p>register works!</p>
+<app-navbar></app-navbar>
+<main class="login-container">
+    <mat-card class="login">
+        <mat-card-header class="card-header">
+            <mat-card-title class="card-title">Regístrate</mat-card-title>
+        </mat-card-header>
+        <form (ngSubmit)="register()" [formGroup]="form">
+            <mat-card-content class="card-content">
+                <mat-form-field class="input" appearance="fill">
+                    <mat-label>Nombres</mat-label>
+                    <input matInput placeholder="Ingrese su nombre" formControlName="name" autocomplete="off" />
+                    <mat-error *ngIf="hasError('name', 'required')">Ingrese un nombre</mat-error>
+                    <mat-error *ngIf="hasError('name', 'maxlength')">El nombre no deben contener más de 100 caracteres
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="input" appearance="fill">
+                    <mat-label>Apellidos</mat-label>
+                    <input matInput placeholder="Ingrese su nombre" formControlName="lastName" autocomplete="off" />
+                    <mat-error *ngIf="hasError('lastName', 'required')">Ingrese un nombre</mat-error>
+                    <mat-error *ngIf="hasError('lastName', 'maxlength')">Los apellidos no deben contener más de 100
+                        caracteres</mat-error>
+                </mat-form-field>
+                <mat-form-field class="input" appearance="fill">
+                    <mat-label>DNI</mat-label>
+                    <input matInput placeholder="Ingrese su nombre" formControlName="dni" autocomplete="off" />
+                    <mat-error *ngIf="hasError('dni', 'required')">Ingrese un DNI</mat-error>
+                    <mat-error *ngIf="hasError('dni', 'minlength') || hasError('dni', 'maxlength')">El dni debe contener
+                        8 caracteres</mat-error>
+                </mat-form-field>
+                <mat-form-field class="input" appearance="fill">
+                    <mat-label>Edad</mat-label>
+                    <input matInput placeholder="Ingrese su nombre" formControlName="age" autocomplete="off" />
+                    <mat-error *ngIf="hasError('age', 'min')">No se puede registrar a un usuario menor de edad
+                    </mat-error>
+                    <mat-error *ngIf="hasError('age', 'required')">Ingrese un nombre</mat-error>
+                </mat-form-field>
+                <mat-form-field class="input" appearance="fill">
+                    <mat-label>Departamento</mat-label>
+                    <mat-select formControlName="department">
+                        <mat-option *ngFor="let dep of departments" [value]="dep.nombre_ubigeo"
+                            (onSelectionChange)="onChangeDepartmentSelect(dep.id_ubigeo, $event)">
+                            {{ dep.nombre_ubigeo }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="input" appearance="fill">
+                    <mat-label>Provincia</mat-label>
+                    <mat-select formControlName="province">
+                        <mat-option *ngFor="let pro of provinces" [value]="pro.nombre_ubigeo"
+                            (onSelectionChange)="onChangeProvinceSelect(pro.id_ubigeo, $event)">
+                            {{ pro.nombre_ubigeo }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="input" appearance="fill">
+                    <mat-label>Distrito</mat-label>
+                    <mat-select formControlName="district">
+                        <mat-option *ngFor="let dis of districts" [value]="dis.nombre_ubigeo">
+                            {{ dis.nombre_ubigeo }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="input" appearance="fill">
+                    <mat-label>Correo</mat-label>
+                    <input type="email" matInput placeholder="Ingrese su correo" formControlName="email"
+                        autocomplete="off" />
+                    <mat-error *ngIf="hasError('email', 'email') && !hasError('email', 'required')">Ingrese un correo
+                        válido
+                    </mat-error>
+                    <mat-error *ngIf="hasError('email', 'required')">Ingrese un correo</mat-error>
+                </mat-form-field>
+                <mat-form-field class="input" appearance="fill">
+                    <mat-label>Contraseña</mat-label>
+                    <input type="password" matInput placeholder="Ingrese su contraseña" formControlName="password"
+                        autocomplete="off" [pattern]="strongPasswordRegex" />
+                    <mat-error *ngIf="hasError('password', 'required')">Ingrese una contraseña</mat-error>
+                    <mat-error *ngIf="hasError('password', 'pattern')">La contraseña debe contener al menos 1 minúscula,
+                        1 mayúscula, 1 número, 1 caracter especial y 8 caracteres</mat-error>
+                </mat-form-field>
+            </mat-card-content>
+            <mat-card-actions class="card-actions">
+                <button type="submit" mat-raised-button color="primary" class="save" [disabled]="form.invalid">
+                    REGISTRAR
+                </button>
+            </mat-card-actions>
+        </form>
+    </mat-card>
+    <app-loading-spinner *ngIf="loading | async"></app-loading-spinner>
+</main>
+<app-footer></app-footer>

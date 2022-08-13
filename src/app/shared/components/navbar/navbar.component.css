@@ -1,6 +1,11 @@
 .navbar {
   background-color: #0d206f;
   height: 95px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
 }
 
 .logo {
@@ -27,7 +32,7 @@
   color: #fff;
 }
 
-.navigation > p {
+.navigation>p {
   margin: 0;
   color: #fff;
   font-size: 16px;

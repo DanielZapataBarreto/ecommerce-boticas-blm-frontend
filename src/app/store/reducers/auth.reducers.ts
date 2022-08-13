@@ -84,3 +84,11 @@ export const selectIsLoggingFromAuthState = createSelector(
   selectAuthState,
   (state) => state.isLogging
 );
+export const selectUserIdFromAuthState = createSelector(
+  selectAuthState,
+  (state) => state.user._id
+);
+export const selectUserAddressFromAuthState = createSelector(
+  selectAuthState,
+  (state) => state.user.address
+);

@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl: 'https://botica-blm-backend.herokuapp.com/api/v1',
+  // apiBaseUrl: 'https://botica-blm-backend.herokuapp.com/api/v1',
+  apiBaseUrl: 'http://localhost:4201/api/v1',
 };
 
 /*

@@ -23,6 +23,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { authReducer } from './store/reducers/auth.reducers';
 import { AuthEffects } from './store/effects/auth.effects';
 import { environment } from 'src/environments/environment';
+import { cartReducer } from './store/reducers/cart.reducers';
+import { productReducer } from './store/reducers/product.reducer';
+import { ProductEffects } from './store/effects/product.effects';
 
 @NgModule({
   declarations: [
@@ -44,8 +47,15 @@ import { environment } from 'src/environments/environment';
     FontAwesomeModule,
     HttpClientModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({ auth: authReducer }),
-    EffectsModule.forRoot([AuthEffects]),
+    StoreModule.forRoot({
+      auth: authReducer,
+      cart: cartReducer,
+      product: productReducer
+    }),
+    EffectsModule.forRoot([
+      AuthEffects,
+      ProductEffects
+    ]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
@@ -55,4 +65,4 @@ import { environment } from 'src/environments/environment';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
