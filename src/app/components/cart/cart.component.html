@@ -33,22 +33,6 @@
                     </mat-card-actions>
                 </div>
             </mat-card>
-            <!-- <mat-card>
-                <mat-card-header>
-                  <mat-card-title>{{ item.title }}</mat-card-title>
-                  <mat-card-subtitle>S/.{{ item.price.toFixed(2) }}</mat-card-subtitle>
-                </mat-card-header>
-                <img mat-card-image src="{{ baseUrl }}/{{ item.image }}" alt="{{ item.title }}" />
-                <mat-card-content>
-                  <p>{{ item.description || "Sin descripción disponible" }}</p>
-                </mat-card-content>
-                <mat-card-actions>
-                  <button mat-button class="add-to-cart" (click)="addProductToCart(item)">AÑADIR AL CARRITO</button>
-                </mat-card-actions>
-              </mat-card>
-              <button mat-button class="show-more" routerLink="/products">
-                VER MÁS
-              </button> -->
         </div>
     </div>
     <div *ngIf="(totalQuantityCartItems | async) === 0">
@@ -58,3 +42,4 @@
         </div>
     </div>
 </main>
+<app-footer></app-footer>

@@ -8,6 +8,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CartComponent } from './components/cart/cart.component';
+// import { CheckoutPageComponent } from './components/checkout-page/checkout-page.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AngularMaterialModule } from './shared/angular-material/angular-material.module';
@@ -26,6 +27,7 @@ import { environment } from 'src/environments/environment';
 import { cartReducer } from './store/reducers/cart.reducers';
 import { productReducer } from './store/reducers/product.reducer';
 import { ProductEffects } from './store/effects/product.effects';
+import { SuccessComponent } from './components/success/success.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { ProductEffects } from './store/effects/product.effects';
     ProductsComponent,
     NavbarComponent,
     FooterComponent,
+    // CheckoutPageComponent,
     LoadingSpinnerComponent,
+    SuccessComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,12 +54,9 @@ import { ProductEffects } from './store/effects/product.effects';
     StoreModule.forRoot({
       auth: authReducer,
       cart: cartReducer,
-      product: productReducer
+      product: productReducer,
     }),
-    EffectsModule.forRoot([
-      AuthEffects,
-      ProductEffects
-    ]),
+    EffectsModule.forRoot([AuthEffects, ProductEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
@@ -65,4 +66,4 @@ import { ProductEffects } from './store/effects/product.effects';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
